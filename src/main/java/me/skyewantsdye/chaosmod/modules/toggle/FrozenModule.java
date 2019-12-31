@@ -1,7 +1,7 @@
 package me.skyewantsdye.chaosmod.modules.toggle;
 
 import me.skyewantsdye.chaosmod.ChaosPlugin;
-import me.skyewantsdye.chaosmod.TimedChaosModule;
+import me.skyewantsdye.chaosmod.modules.TimedChaosModule;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 

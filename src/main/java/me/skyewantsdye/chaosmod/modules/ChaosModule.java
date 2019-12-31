@@ -1,4 +1,4 @@
-package me.skyewantsdye.chaosmod;
+package me.skyewantsdye.chaosmod.modules;
 
 public abstract class ChaosModule {
 

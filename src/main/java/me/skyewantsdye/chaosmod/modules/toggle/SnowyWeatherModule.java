@@ -1,6 +1,6 @@
 package me.skyewantsdye.chaosmod.modules.toggle;
 
-import me.skyewantsdye.chaosmod.TimedChaosModule;
+import me.skyewantsdye.chaosmod.modules.TimedChaosModule;
 
 public class SnowyWeatherModule extends TimedChaosModule {
 

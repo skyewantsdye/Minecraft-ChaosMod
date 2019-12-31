@@ -1,6 +1,6 @@
 package me.skyewantsdye.chaosmod.modules.single;
 
-import me.skyewantsdye.chaosmod.ChaosModule;
+import me.skyewantsdye.chaosmod.modules.ChaosModule;
 import me.skyewantsdye.chaosmod.ChaosPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.util.Vector;

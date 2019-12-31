@@ -1,5 +1,6 @@
-package me.skyewantsdye.chaosmod;
+package me.skyewantsdye.chaosmod.modules;
 
+import me.skyewantsdye.chaosmod.ChaosPlugin;
 import me.skyewantsdye.chaosmod.modules.single.*;
 import me.skyewantsdye.chaosmod.modules.toggle.FrozenModule;
 import org.bukkit.Bukkit;
@@ -48,7 +49,7 @@ public class ModuleHandler {
         // Make sure it's not already running.
         if (!running) {
             // Schedule the random module timer and chaos bossbar.
-            Bukkit.getScheduler().scheduleSyncRepeatingTask(ChaosPlugin.instance, () -> activateRandomModule(),
+            Bukkit.getScheduler().scheduleSyncRepeatingTask(ChaosPlugin.instance, this::activateRandomModule,
                     0, 30 * 20);
             Bukkit.getScheduler().scheduleSyncRepeatingTask(ChaosPlugin.instance, ChaosPlugin.instance.bossBarTask, 0 ,20);
             // Set running to true.
@@ -60,10 +61,21 @@ public class ModuleHandler {
         while (lastModules.size() > 4)
             lastModules.remove(0);
 
+        if (Bukkit.getScoreboardManager() == null) {
+            Bukkit.getLogger().severe("Couldn't get the ScoreboardManager!");
+            return;
+        }
+
         Scoreboard scoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
         if (scoreboard.getObjective("Events") == null)
             scoreboard.registerNewObjective("Events", "dummy", "Events");
         Objective objective = scoreboard.getObjective("Events");
+
+        if (objective == null) {
+            Bukkit.getLogger().severe("Couldn't get the `Events` objective!");
+            return;
+        }
+
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
         for (ChaosModule value : modulesByName.values()) {
             scoreboard.resetScores(value.getName());

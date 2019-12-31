@@ -8,3 +8,4 @@ description: A chaos mod (plugin) for Minecraft, inspired by chaos mods for the 
 
 commands:
   chaos:
+    description: Command to activate any module.

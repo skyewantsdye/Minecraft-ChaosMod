@@ -1,6 +1,6 @@
 package me.skyewantsdye.chaosmod.modules.single;
 
-import me.skyewantsdye.chaosmod.ChaosModule;
+import me.skyewantsdye.chaosmod.modules.ChaosModule;
 import net.md_5.bungee.api.ChatColor;
 import org.apache.commons.lang.WordUtils;
 import org.bukkit.Bukkit;

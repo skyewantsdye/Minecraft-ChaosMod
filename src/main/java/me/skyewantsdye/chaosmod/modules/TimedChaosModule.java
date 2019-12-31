@@ -1,12 +1,13 @@
-package me.skyewantsdye.chaosmod;
+package me.skyewantsdye.chaosmod.modules;
 
+import me.skyewantsdye.chaosmod.ChaosPlugin;
 import org.bukkit.Bukkit;
 
 import java.time.Duration;
 
 import static java.time.temporal.ChronoUnit.SECONDS;
 
-public abstract class TimedChaosModule extends ChaosModule{
+public abstract class TimedChaosModule extends ChaosModule {
 
     public void onStart() {}
     public void onEnd() {}
@@ -15,7 +16,7 @@ public abstract class TimedChaosModule extends ChaosModule{
     public void onToggle() {
         onStart();
         // Schedule the onEnd() function, so that the TimedModule will end.
-        Bukkit.getScheduler().runTaskLaterAsynchronously(ChaosPlugin.instance, () -> onEnd(),
+        Bukkit.getScheduler().runTaskLaterAsynchronously(ChaosPlugin.instance, this::onEnd,
                 // Seconds * 20, to get the time in ticks.
                 getDuration().getSeconds() * 20);
     }

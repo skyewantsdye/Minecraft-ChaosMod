@@ -1,12 +1,11 @@
 package me.skyewantsdye.chaosmod;
 
-import org.bukkit.event.EventHandler;
+import me.skyewantsdye.chaosmod.modules.ModuleHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.UUID;
 
 public final class ChaosPlugin extends JavaPlugin implements Listener {
@@ -28,7 +27,7 @@ public final class ChaosPlugin extends JavaPlugin implements Listener {
         this.chaosEvents = new ChaosEvents();
         getServer().getPluginManager().registerEvents(chaosEvents, this);
 
-        getCommand("chaos").setExecutor(new ChaosCommand());
+        Objects.requireNonNull(getCommand("chaos")).setExecutor(new ChaosCommand());
     }
 
     @Override

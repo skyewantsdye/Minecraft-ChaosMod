@@ -6,7 +6,7 @@
 
     <groupId>me.skyewantsdye</groupId>
     <artifactId>ChaosMod</artifactId>
-    <version>10</version>
+    <version>1</version>
     <packaging>jar</packaging>
 
     <name>ChaosMod</name>

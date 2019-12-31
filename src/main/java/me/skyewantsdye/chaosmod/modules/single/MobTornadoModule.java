@@ -1,6 +1,6 @@
 package me.skyewantsdye.chaosmod.modules.single;
 
-import me.skyewantsdye.chaosmod.ChaosModule;
+import me.skyewantsdye.chaosmod.modules.ChaosModule;
 import me.skyewantsdye.chaosmod.ChaosPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -20,6 +20,11 @@ public class MobTornadoModule extends ChaosModule {
     }
 
     private void drawTornado(Location location, float radius, float increase, EntityType entityType) {
+        if (location == null || entityType == null) {
+            Bukkit.getLogger().info("drawTornado() requires arguments.");
+            return;
+        }
+
         float y = (float) location.getY();
         Map<Entity, Location> frozenEntities = new HashMap<>();
         for (double t = 0; t < 5; t += 0.5) {
@@ -34,9 +39,7 @@ public class MobTornadoModule extends ChaosModule {
             radius += increase;
         }
 
-        int taskId = Bukkit.getScheduler().scheduleSyncRepeatingTask(ChaosPlugin.instance, () -> {
-            frozenEntities.forEach(Entity::teleport);
-        }, 0, 1);
+        int taskId = Bukkit.getScheduler().scheduleSyncRepeatingTask(ChaosPlugin.instance, () -> frozenEntities.forEach(Entity::teleport), 0, 1);
 
         Bukkit.getScheduler().runTaskLaterAsynchronously(ChaosPlugin.instance, () -> {
             frozenEntities.clear();
