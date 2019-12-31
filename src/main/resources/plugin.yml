@@ -1,0 +1,10 @@
+name: ChaosMod
+version: ${project.version}
+main: me.skyewantsdye.chaosmod.ChaosPlugin
+api-version: 1.13
+prefix: CHAOS
+authors: [skyewantsdye]
+description: A chaos mod (plugin) for Minecraft, inspired by chaos mods for the Grand Theft Auto series.
+
+commands:
+  chaos:
