@@ -1,11 +1,9 @@
 package me.skyewantsdye.chaosmod;
 
 import org.bukkit.Bukkit;
-import org.bukkit.Keyed;
 import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarStyle;
 import org.bukkit.boss.BossBar;
-import org.bukkit.boss.KeyedBossBar;
 
 public class BossBarTask implements Runnable {
 

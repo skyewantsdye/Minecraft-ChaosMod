@@ -2,13 +2,10 @@ package me.skyewantsdye.chaosmod.modules;
 
 import com.google.common.reflect.ClassPath;
 import me.skyewantsdye.chaosmod.ChaosPlugin;
-import me.skyewantsdye.chaosmod.modules.single.*;
-import me.skyewantsdye.chaosmod.modules.toggle.FrozenModule;
 import org.bukkit.Bukkit;
 import org.bukkit.scoreboard.*;
 
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 

@@ -2,7 +2,6 @@ package me.skyewantsdye.chaosmod;
 
 import me.skyewantsdye.chaosmod.gui.ModuleUI;
 import me.skyewantsdye.chaosmod.modules.ChaosModule;
-import net.md_5.bungee.api.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

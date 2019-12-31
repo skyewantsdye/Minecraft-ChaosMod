@@ -3,16 +3,12 @@ package me.skyewantsdye.chaosmod.gui;
 import me.skyewantsdye.chaosmod.ChaosPlugin;
 import me.skyewantsdye.chaosmod.modules.ChaosModule;
 import net.md_5.bungee.api.ChatColor;
-import org.bukkit.Material;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.util.ChatPaginator;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class ModuleUI extends GUI{
 
