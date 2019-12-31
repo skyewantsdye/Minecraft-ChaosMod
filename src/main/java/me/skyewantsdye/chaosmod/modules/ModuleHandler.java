@@ -1,11 +1,14 @@
 package me.skyewantsdye.chaosmod.modules;
 
+import com.google.common.reflect.ClassPath;
 import me.skyewantsdye.chaosmod.ChaosPlugin;
 import me.skyewantsdye.chaosmod.modules.single.*;
 import me.skyewantsdye.chaosmod.modules.toggle.FrozenModule;
 import org.bukkit.Bukkit;
 import org.bukkit.scoreboard.*;
 
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -16,13 +19,30 @@ public class ModuleHandler {
     private List<String> lastModules = new ArrayList<>();
 
     public ModuleHandler() {
-        modulesByName.put("TimeChange", new TimeChangeModule());
-        modulesByName.put("RandomItem", new RandomItemModule());
-        modulesByName.put("Potato", new PotatoModule());
-        modulesByName.put("DropItem", new DropItemModule());
-        modulesByName.put("LaunchPlayer", new LaunchPlayerModule());
-        modulesByName.put("Frozen", new FrozenModule());
-        modulesByName.put("Tornado", new MobTornadoModule());
+        final ClassLoader loader = getClass().getClassLoader();
+        try {
+            // Get the classpath from our class loader.
+            ClassPath classPath = ClassPath.from(loader);
+            // Get all of the classes in the modules package.
+            for (ClassPath.ClassInfo topLevelClass : classPath.getTopLevelClassesRecursive("me.skyewantsdye.chaosmod.modules")) {
+                String clazzName = topLevelClass.getName();
+                // Make sure the class is in either the single or toggle subpackage.
+                if (!clazzName.startsWith("me.skyewantsdye.chaosmod.modules.single.") &&
+                        !clazzName.contains("me.skyewantsdye.chaosmod.modules.toggle."))
+                    continue;
+                // Load the class
+                Class<?> moduleClazz = topLevelClass.load();
+                // Make sure the class isn't null
+                if (moduleClazz == null) continue;
+                // Make a new instance of the class.
+                Object module = moduleClazz.newInstance();
+                // Make sure the class is a ChaosModule, then register it.
+                if (module instanceof ChaosModule)
+                    modulesByName.put(((ChaosModule) module).getName(), (ChaosModule) module);
+            }
+        } catch (IOException | InstantiationException | IllegalAccessException ex) {
+            ex.printStackTrace();
+        }
     }
 
     public ChaosModule getModule(String name) {
@@ -90,6 +110,10 @@ public class ModuleHandler {
 
     public Collection<String> getModulesNames() {
         return modulesByName.keySet();
+    }
+
+    public Collection<ChaosModule> getModules() {
+        return modulesByName.values();
     }
 
     public void end() {

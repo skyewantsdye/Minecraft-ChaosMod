@@ -37,4 +37,14 @@ public class DropItemModule extends ChaosModule {
     public String getName() {
         return "Drop";
     }
+
+    @Override
+    public Material itemMaterial() {
+        return Material.STICK;
+    }
+
+    @Override
+    public String description() {
+        return "Drops the item in your main hand... hope you didn't need that.";
+    }
 }

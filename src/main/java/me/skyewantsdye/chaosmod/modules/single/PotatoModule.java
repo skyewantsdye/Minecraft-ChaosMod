@@ -36,4 +36,14 @@ public class PotatoModule extends ChaosModule {
         return "Potato";
     }
 
+    @Override
+    public Material itemMaterial() {
+        return Material.POTATO;
+    }
+
+    @Override
+    public String description() {
+        return "Potato.";
+    }
+
 }

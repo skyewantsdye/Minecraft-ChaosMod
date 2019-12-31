@@ -3,6 +3,7 @@ package me.skyewantsdye.chaosmod.modules.single;
 import me.skyewantsdye.chaosmod.modules.ChaosModule;
 import me.skyewantsdye.chaosmod.ChaosPlugin;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.util.Vector;
 
 import java.util.concurrent.ThreadLocalRandom;
@@ -25,4 +26,15 @@ public class LaunchPlayerModule extends ChaosModule {
     public String getName() {
         return "Launch";
     }
+
+    @Override
+    public Material itemMaterial() {
+        return Material.SLIME_BLOCK;
+    }
+
+    @Override
+    public String description() {
+        return "Launches the player up to 128 blocks in the air! Wheeee!";
+    }
+
 }

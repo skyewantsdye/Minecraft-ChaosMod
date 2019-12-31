@@ -37,4 +37,14 @@ public class RandomItemModule extends ChaosModule {
         return "Random Item";
     }
 
+    @Override
+    public Material itemMaterial() {
+        return Material.EMERALD;
+    }
+
+    @Override
+    public String description() {
+        return "You get a random item, and you get a random item, and YOU get a random item!";
+    }
+
 }

@@ -2,6 +2,7 @@ package me.skyewantsdye.chaosmod.modules.single;
 
 import me.skyewantsdye.chaosmod.modules.ChaosModule;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.World;
 
 import java.util.concurrent.ThreadLocalRandom;
@@ -21,6 +22,16 @@ public class TimeChangeModule extends ChaosModule {
     @Override
     public String getName() {
         return "Time Change";
+    }
+
+    @Override
+    public Material itemMaterial() {
+        return Material.CLOCK;
+    }
+
+    @Override
+    public String description() {
+        return "Randomly changes the time.";
     }
 
 }

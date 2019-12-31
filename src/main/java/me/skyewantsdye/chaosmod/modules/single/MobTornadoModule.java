@@ -4,6 +4,7 @@ import me.skyewantsdye.chaosmod.modules.ChaosModule;
 import me.skyewantsdye.chaosmod.ChaosPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 
@@ -16,7 +17,7 @@ public class MobTornadoModule extends ChaosModule {
     @Override
     public void onToggle() {
         EntityType[] entities = EntityType.values();
-        Bukkit.getOnlinePlayers().forEach(o -> drawTornado(o.getLocation(), 1.5f, 0.03f, entities[ThreadLocalRandom.current().nextInt(entities.length)]));
+        Bukkit.getOnlinePlayers().forEach(o -> drawTornado(o.getLocation(), ThreadLocalRandom.current().nextFloat(), ThreadLocalRandom.current().nextFloat(), entities[ThreadLocalRandom.current().nextInt(entities.length)]));
     }
 
     private void drawTornado(Location location, float radius, float increase, EntityType entityType) {
@@ -50,6 +51,16 @@ public class MobTornadoModule extends ChaosModule {
     @Override
     public String getName() {
         return "Mob Tornado";
+    }
+
+    @Override
+    public Material itemMaterial() {
+        return Material.CAT_SPAWN_EGG;
+    }
+
+    @Override
+    public String description() {
+        return "Makes a tornado out of mobs!";
     }
 
 }
