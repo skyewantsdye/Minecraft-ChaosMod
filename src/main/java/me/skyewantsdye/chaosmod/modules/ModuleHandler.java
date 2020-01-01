@@ -15,6 +15,7 @@ public class ModuleHandler {
     private boolean running;
     private List<String> lastModules = new ArrayList<>();
 
+    @SuppressWarnings({"deprecation", "UnstableApiUsage"})
     public ModuleHandler() {
         final ClassLoader loader = getClass().getClassLoader();
         try {
@@ -35,11 +36,13 @@ public class ModuleHandler {
                 Object module = moduleClazz.newInstance();
                 // Make sure the class is a ChaosModule, then register it.
                 if (module instanceof ChaosModule)
-                    modulesByName.put(((ChaosModule) module).getName(), (ChaosModule) module);
+                    modulesByName.put(((ChaosModule) module).getName().replace(" ", "_").toUpperCase(), (ChaosModule) module);
             }
         } catch (IOException | InstantiationException | IllegalAccessException ex) {
             ex.printStackTrace();
         }
+
+        modulesByName.keySet().forEach(System.out::println);
     }
 
     public ChaosModule getModule(String name) {
