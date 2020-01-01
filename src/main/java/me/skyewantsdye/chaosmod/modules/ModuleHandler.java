@@ -14,6 +14,7 @@ public class ModuleHandler {
     private final Map<String, ChaosModule> modulesByName = new HashMap<>();
     private boolean running;
     private List<String> lastModules = new ArrayList<>();
+    public List<ChaosModule> disabledModules = new ArrayList<>();
 
     @SuppressWarnings({"deprecation", "UnstableApiUsage"})
     public ModuleHandler() {
@@ -57,6 +58,9 @@ public class ModuleHandler {
         // Get a random module from the modules list.
         ChaosModule module = (ChaosModule) modulesByName.values().toArray()[
                 ThreadLocalRandom.current().nextInt(modulesByName.size())];
+        while (disabledModules.contains(module))
+            module = (ChaosModule) modulesByName.values().toArray()[
+                    ThreadLocalRandom.current().nextInt(modulesByName.size())];
         // Toggle the module.
         module.onToggle();
         // Add the module to the last used modules.
